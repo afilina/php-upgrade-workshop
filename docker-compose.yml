@@ -4,7 +4,17 @@ services:
       context: ./
       dockerfile: ./.docker/php5/Dockerfile
     ports:
-      - "8000:80"
+      - "8053:80"
+    volumes:
+      - ./:/var/www/html:z
+    working_dir: /var/www/html
+
+  php8:
+    build:
+      context: ./
+      dockerfile: ./.docker/php8/Dockerfile
+    ports:
+      - "8081:80"
     volumes:
       - ./:/var/www/html:z
     working_dir: /var/www/html
