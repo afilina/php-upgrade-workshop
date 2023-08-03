@@ -1,7 +1,7 @@
 <?php
 include 'include/common.inc';
 
-switch ($HTTP_GET_VARS['action']) {
+switch ($_GET['action']) {
     case 'products_csv':
         $result = mysql_query('SELECT * FROM products');
         while($row = mysql_fetch_array($result)) {

@@ -1,18 +1,18 @@
 <?php
 include 'include/common.inc';
 
-$result = mysql_query('SELECT * FROM products WHERE id = ' . $HTTP_GET_VARS['id']);
+$result = mysql_query('SELECT * FROM products WHERE id = ' . $_GET['id']);
 $product = mysql_fetch_object($result);
 
 $title = $product->name;
 
-switch ($HTTP_GET_VARS['action']) {
+switch ($_GET['action']) {
     case 'view':
         include 'page_header.inc';
     ?>
     <h1><?=$product->name?></h1>
     <?php if (is_admin()): ?>
-        <a href="<?=$hostname?>/product.php?action=edit&id=<?=$HTTP_GET_VARS['id']?>">Admin Edit</a>
+        <a href="<?=$hostname?>/product.php?action=edit&id=<?=$_GET['id']?>">Admin Edit</a>
     <?php endif ?>
     <p>Price: <?=format_price($product->price)?></p>
     <?php
@@ -27,8 +27,8 @@ switch ($HTTP_GET_VARS['action']) {
         $is_valid = validate($form_values, $validation);
         if (is_form_submitted() && $is_valid) {
             //The Elder Scrolls V: Skyrim
-            mysql_query("UPDATE products SET name = '$form_values->name', price = '$form_values->price' WHERE id = {$HTTP_GET_VARS{'id'}}");
-            header('Location: '.$hostname.'/product.php?action=view&id='.$HTTP_GET_VARS['id']);
+            mysql_query("UPDATE products SET name = '$form_values->name', price = '$form_values->price' WHERE id = {$_GET{'id'}}");
+            header('Location: '.$hostname.'/product.php?action=view&id='.$_GET['id']);
             exit;
         }
         ?>
@@ -38,7 +38,7 @@ switch ($HTTP_GET_VARS['action']) {
             show_form_errors();
         }
         ?>
-        <form action="<?=$hostname?>/product.php?action=edit&id=<?=$HTTP_GET_VARS['id']?>" method="POST">
+        <form action="<?=$hostname?>/product.php?action=edit&id=<?=$_GET['id']?>" method="POST">
             <table>
                 <tr>
                     <td>Name:</td>
