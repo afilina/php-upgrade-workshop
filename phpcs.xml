@@ -1,0 +1,11 @@
+<ruleset name="coding-style">
+    <description>PHP 8.1 upgrade</description>
+
+    <rule ref="Internal.NoCodeFound">
+        <severity>0</severity>
+    </rule>
+
+    <rule ref="PHPCompatibility">
+        <exclude name="PHPCompatibility.Extensions.RemovedExtensions.mysql_DeprecatedRemoved"/>
+    </rule>
+</ruleset>
