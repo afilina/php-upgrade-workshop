@@ -16,8 +16,8 @@ function get_form_values($initial_data)
 {
     global $HTTP_POST_VARS;
     while (list($k, $v) = Adapter53::each($initial_data)) {
-        if (isset($HTTP_POST_VARS{$k})) {
-            $initial_data->$k = $HTTP_POST_VARS{$k};
+        if (isset($HTTP_POST_VARS[$k])) {
+            $initial_data->$k = $HTTP_POST_VARS[$k];
         }
     }
     return $initial_data;
@@ -29,8 +29,8 @@ function validate($data, $validation)
     reset($data);
     $is_valid = true;
     while (list($k, $v) = Adapter53::each($data)) {
-        if (isset($validation{$k})) {
-            while (list($k2, $v2) = Adapter53::each($validation{$k})) {
+        if (isset($validation[$k])) {
+            while (list($k2, $v2) = Adapter53::each($validation[$k])) {
                 if ($message = call_user_func('validate_' . $k2, $k2, $v, $v2)) {
                     $errors[] = $message;
                     $is_valid = false;
