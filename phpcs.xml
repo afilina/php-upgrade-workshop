@@ -1,6 +1,14 @@
 <ruleset name="coding-style">
     <description>PHP 8.1 upgrade</description>
 
+    <exclude-pattern>vendor</exclude-pattern>
+    <exclude-pattern>node_modules</exclude-pattern>
+    <exclude-pattern>plugins</exclude-pattern>
+
+    <arg name="extensions" value="php,inc" />
+    <arg name="colors"/>
+    <arg value="s"/>
+
     <rule ref="Internal.NoCodeFound">
         <severity>0</severity>
     </rule>
