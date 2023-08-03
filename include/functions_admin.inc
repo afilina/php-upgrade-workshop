@@ -8,16 +8,16 @@ if (!function_exists('format_price')) {
 
 function is_form_submitted()
 {
-    global $HTTP_POST_VARS;
-    return count($HTTP_POST_VARS) > 0;
+    global $_POST;
+    return count($_POST) > 0;
 }
 
 function get_form_values($initial_data)
 {
-    global $HTTP_POST_VARS;
+    global $_POST;
     while (list($k, $v) = Adapter53::each($initial_data)) {
-        if (isset($HTTP_POST_VARS[$k])) {
-            $initial_data->$k = $HTTP_POST_VARS[$k];
+        if (isset($_POST[$k])) {
+            $initial_data->$k = $_POST[$k];
         }
     }
     return $initial_data;
