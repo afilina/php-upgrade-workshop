@@ -16,7 +16,7 @@ switch ($_GET['action']) {
         header("Content-Type: text/csv");
         header("Content-Disposition: attachment; filename=products.csv");
         while (list($k, $v) = each($rows)) {
-            echo implode(array('name'=>$v['name'], 'price'=>$v['price']), ',') . "\n";
+            echo implode(',', array('name'=>$v['name'], 'price'=>$v['price'])) . "\n";
         }
         exit;
     case 'products_pdf':
