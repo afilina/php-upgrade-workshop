@@ -3,7 +3,8 @@
         "rector/rector": "^0.17.1"
     },
     "require": {
-        "phpcompatibility/php-compatibility": "^9.3"
+        "phpcompatibility/php-compatibility": "^9.3",
+        "friendsofphp/php-cs-fixer": "^3.22"
     },
     "scripts": {
         "post-install-cmd": "\"vendor/bin/phpcs\" --config-set installed_paths vendor/phpcompatibility/php-compatibility",
