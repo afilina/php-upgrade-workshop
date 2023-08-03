@@ -9,7 +9,7 @@ set_include_path(join(':', array(
     $root . '/plugins'
 )));
 
-$hostname = 'http://localhost:8053';
+$hostname = 'http://localhost:8081';
 
 $config_file = $root . '/include/config.inc';
 $fh = fopen($config_file, 'r');
