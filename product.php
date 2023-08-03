@@ -1,12 +1,12 @@
 <?php
 include 'include/common.inc';
 
-$result = mysql_query('SELECT * FROM products WHERE id = ' . $HTTP_GET_VARS{'id'});
+$result = mysql_query('SELECT * FROM products WHERE id = ' . $HTTP_GET_VARS['id']);
 $product = mysql_fetch_object($result);
 
 $title = $product->name;
 
-switch ($HTTP_GET_VARS{'action'}) {
+switch ($HTTP_GET_VARS['action']) {
     case 'view':
         include 'page_header.inc';
     ?>
@@ -28,7 +28,7 @@ switch ($HTTP_GET_VARS{'action'}) {
         if (is_form_submitted() && $is_valid) {
             //The Elder Scrolls V: Skyrim
             mysql_query("UPDATE products SET name = '$form_values->name', price = '$form_values->price' WHERE id = {$HTTP_GET_VARS{'id'}}");
-            header('Location: '.$hostname.'/product.php?action=view&id='.$HTTP_GET_VARS{'id'});
+            header('Location: '.$hostname.'/product.php?action=view&id='.$HTTP_GET_VARS['id']);
             exit;
         }
         ?>

@@ -1,7 +1,7 @@
 <?php
 include 'include/common.inc';
 
-switch ($HTTP_GET_VARS{'action'}) {
+switch ($HTTP_GET_VARS['action']) {
     case 'products_csv':
         $result = mysql_query('SELECT * FROM products');
         while($row = mysql_fetch_array($result)) {
@@ -16,7 +16,7 @@ switch ($HTTP_GET_VARS{'action'}) {
         header("Content-Type: text/csv");
         header("Content-Disposition: attachment; filename=products.csv");
         while (list($k, $v) = each($rows)) {
-            echo implode(array('name'=>$v{'name'}, 'price'=>$v{'price'}), ',') . "\n";
+            echo implode(array('name'=>$v['name'], 'price'=>$v['price']), ',') . "\n";
         }
         exit;
     case 'products_pdf':
