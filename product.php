@@ -16,7 +16,7 @@ switch ($_GET['action']) {
     <?php endif ?>
     <p>Price: <?=format_price($product->price)?></p>
     <?php
-        continue;
+        break;
     case 'edit':
         include 'page_header.inc';
         include 'functions_admin.inc';
@@ -52,7 +52,7 @@ switch ($_GET['action']) {
             <input type="submit" value="Submit">
         </form>
         <?php
-        continue;
+        break;
 }
 
 include 'page_footer.inc';
