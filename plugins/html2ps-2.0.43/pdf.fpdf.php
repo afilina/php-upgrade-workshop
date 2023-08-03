@@ -2337,7 +2337,7 @@ EOF
     function _putimages() {
       $filter=($this->compress) ? '/Filter /FlateDecode ' : '';
       reset($this->images);
-      while (list($file,$info) = each($this->images)) {
+      while (list($file,$info) = Adapter53::each($this->images)) {
         $this->_newobj();
         $this->images[$file]['n']=$this->n;
         $this->_out('<</Type /XObject');

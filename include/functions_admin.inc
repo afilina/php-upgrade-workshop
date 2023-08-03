@@ -15,7 +15,7 @@ function is_form_submitted()
 function get_form_values($initial_data)
 {
     global $HTTP_POST_VARS;
-    while (list($k, $v) = each($initial_data)) {
+    while (list($k, $v) = Adapter53::each($initial_data)) {
         if (isset($HTTP_POST_VARS{$k})) {
             $initial_data->$k = $HTTP_POST_VARS{$k};
         }
@@ -28,9 +28,9 @@ function validate($data, $validation)
     global $errors;
     reset($data);
     $is_valid = true;
-    while (list($k, $v) = each($data)) {
+    while (list($k, $v) = Adapter53::each($data)) {
         if (isset($validation{$k})) {
-            while (list($k2, $v2) = each($validation{$k})) {
+            while (list($k2, $v2) = Adapter53::each($validation{$k})) {
                 if ($message = call_user_func('validate_' . $k2, $k2, $v, $v2)) {
                     $errors[] = $message;
                     $is_valid = false;
@@ -45,7 +45,7 @@ function show_form_errors()
 {
     global $errors;
     echo '<ul class="errors">';
-    while (list($k, $v) = each($errors)) {
+    while (list($k, $v) = Adapter53::each($errors)) {
         echo '<li>'.$v.'</li>';
     }
     echo '</ul>';

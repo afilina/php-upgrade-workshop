@@ -224,7 +224,7 @@ class InlineBox extends GenericInlineBox {
             };
             
             reset($mapping);
-            list($encoding, $add) = each($mapping);
+            list($encoding, $add) = Adapter53::each($mapping);
             
             $word = $mapping[$encoding];
             $hyphens = array();

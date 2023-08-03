@@ -17,7 +17,7 @@ $config = fread($fh, filesize($config_file));
 fclose($fh);
 
 $config = Adapter53::split("[\n]", $config);
-while (list($k, $v) = each($config)) {
+while (list($k, $v) = Adapter53::each($config)) {
     $separator = strpos($v, '=');
     define(strtoupper(substr($v, 0, $separator)), substr($v, $separator + 1));
 }
