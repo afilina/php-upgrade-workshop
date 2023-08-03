@@ -160,7 +160,7 @@ function parse_css_selector($raw_selector) {
     return array(SELECTOR_SEQUENCE, array(parse_css_selector($matches[1]), parse_css_selector($matches[2])));
   };
 
-  switch ($raw_selector{0}) {
+  switch ($raw_selector[0]) {
   case '#':
     return array(SELECTOR_ID,    substr($raw_selector,1));
   case '.':

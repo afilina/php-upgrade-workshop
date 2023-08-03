@@ -187,7 +187,7 @@ function _parse_color_declaration($decl, &$success) {
   // color declaration. Thus, we'll add sharp sign automatically if it is missing
   //
   if (strlen($decl) > 0) {
-    if ($decl{0} !== "#") { $decl = "#" . $decl; };
+    if ($decl[0] !== "#") { $decl = "#" . $decl; };
   };
 
   // #000000 form

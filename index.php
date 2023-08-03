@@ -18,8 +18,8 @@ $result = mysql_query('SELECT * FROM products');
 while($row = mysql_fetch_array($result)) {
     ?>
     <tr>
-        <td><a href="<?=$hostname?>/product.php?action=view&id=<?=$row{'id'}?>"><?=$row{'name'}?></a></td>
-        <td><?=format_price($row{'price'})?></td>
+        <td><a href="<?=$hostname?>/product.php?action=view&id=<?=$row['id']?>"><?=$row['name']?></a></td>
+        <td><?=format_price($row['price'])?></td>
     </tr>
     <?
 }

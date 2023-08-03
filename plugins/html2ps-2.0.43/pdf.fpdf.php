@@ -1894,7 +1894,7 @@ EOF
 
       $l=strlen($s);
       for ($i=0; $i<$l; $i++) {
-        $w+=$cw[$s{$i}];
+        $w+=$cw[$s[$i]];
       };
 
       return $w*$this->FontSize/1000;
@@ -2242,12 +2242,12 @@ EOF
         fclose($f);
         $compressed=(substr($file,-2)=='.z');
         if (!$compressed && isset($info['length2'])) {
-          $header=(ord($font{0})==128);
+          $header=(ord($font[0])==128);
           if($header) {
             //Strip first binary header
             $font=substr($font,6);
           }
-          if($header && ord($font{$info['length1']})==128) {
+          if($header && ord($font[$info['length1']])==128) {
             //Strip second binary header
             $font=substr($font,0,$info['length1']).substr($font,$info['length1']+6);
           }

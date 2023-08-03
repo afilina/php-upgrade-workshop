@@ -12,7 +12,7 @@ switch ($HTTP_GET_VARS{'action'}) {
     ?>
     <h1><?=$product->name?></h1>
     <? if (is_admin()): ?>
-        <a href="<?=$hostname?>/product.php?action=edit&id=<?=$HTTP_GET_VARS{'id'}?>">Admin Edit</a>
+        <a href="<?=$hostname?>/product.php?action=edit&id=<?=$HTTP_GET_VARS['id']?>">Admin Edit</a>
     <? endif ?>
     <p>Price: <?=format_price($product->price)?></p>
     <?
@@ -38,7 +38,7 @@ switch ($HTTP_GET_VARS{'action'}) {
             show_form_errors();
         }
         ?>
-        <form action="<?=$hostname?>/product.php?action=edit&id=<?=$HTTP_GET_VARS{'id'}?>" method="POST">
+        <form action="<?=$hostname?>/product.php?action=edit&id=<?=$HTTP_GET_VARS['id']?>" method="POST">
             <table>
                 <tr>
                     <td>Name:</td>

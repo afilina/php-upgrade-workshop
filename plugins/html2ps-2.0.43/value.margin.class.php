@@ -44,7 +44,7 @@ class MarginSideValue {
     $len = strlen($data);
     $is_percentage = false;
     if ($len > 0) {
-      $is_percentage = ($data{$len-1} === '%');
+      $is_percentage = ($data[$len-1] === '%');
     };
 
     $value = new MarginSideValue;

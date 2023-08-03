@@ -267,7 +267,7 @@ class ManagerEncoding {
     
     $converted = '';
     for ($i=0, $size=strlen($word); $i < $size; $i++) {
-      $converted .= code_to_utf8($vector[$word{$i}]);
+      $converted .= code_to_utf8($vector[$word[$i]]);
     };
 
     return $converted;
