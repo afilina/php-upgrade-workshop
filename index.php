@@ -1,4 +1,4 @@
-<?
+<?php
 include 'include/common.inc';
 $title = 'My Awesome Shop';
 include 'page_header.inc';
@@ -14,17 +14,17 @@ $result = mysql_query('SELECT * FROM products');
         <td>Product</td>
         <td>Price</td>
     </tr>
-<?
+<?php
 while($row = mysql_fetch_array($result)) {
     ?>
     <tr>
         <td><a href="<?=$hostname?>/product.php?action=view&id=<?=$row['id']?>"><?=$row['name']?></a></td>
         <td><?=format_price($row['price'])?></td>
     </tr>
-    <?
+    <?php
 }
 ?>
 </table>
-<?
+<?php
 include 'page_footer.inc';
 ?>

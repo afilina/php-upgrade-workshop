@@ -1,4 +1,4 @@
-<?
+<?php
 include 'include/common.inc';
 
 switch ($HTTP_GET_VARS{'action'}) {
@@ -9,7 +9,7 @@ switch ($HTTP_GET_VARS{'action'}) {
         }
 
         if (count($rows) == 0) {
-            ?><p>No results found</p><?
+            ?><p>No results found</p><?php
             exit;
         }
 

@@ -1,4 +1,4 @@
-<?
+<?php
 include 'include/common.inc';
 
 $result = mysql_query('SELECT * FROM products WHERE id = ' . $HTTP_GET_VARS{'id'});
@@ -11,11 +11,11 @@ switch ($HTTP_GET_VARS{'action'}) {
         include 'page_header.inc';
     ?>
     <h1><?=$product->name?></h1>
-    <? if (is_admin()): ?>
+    <?php if (is_admin()): ?>
         <a href="<?=$hostname?>/product.php?action=edit&id=<?=$HTTP_GET_VARS['id']?>">Admin Edit</a>
-    <? endif ?>
+    <?php endif ?>
     <p>Price: <?=format_price($product->price)?></p>
-    <?
+    <?php
         continue;
     case 'edit':
         include 'page_header.inc';
@@ -33,7 +33,7 @@ switch ($HTTP_GET_VARS{'action'}) {
         }
         ?>
         <h1>Edit Product <?=$product->id?></h1>
-        <?
+        <?php
         if (is_form_submitted() && count($errors) > 0) {
             show_form_errors();
         }
@@ -51,7 +51,7 @@ switch ($HTTP_GET_VARS{'action'}) {
             </table>
             <input type="submit" value="Submit">
         </form>
-        <?
+        <?php
         continue;
 }
 
