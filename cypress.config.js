@@ -4,6 +4,6 @@ module.exports = defineConfig({
     e2e: {
         specPattern: ['tests/e2e/*.cy.{js,jsx,ts,tsx}'],
         supportFile: false,
-        baseUrl: 'http://localhost:8053',
+        baseUrl: 'http://localhost:8081',
     }
 });
