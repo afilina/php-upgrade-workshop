@@ -53,6 +53,11 @@ final class Adapter53
         return mysqli_num_rows($result);
     }
 
+    public static function mysql_fetch_object($result, $class_name = 'stdClass', $params = [])
+    {
+        return mysqli_fetch_object($result, $class_name, $params);
+    }
+
     public static function mysql_fetch_array($result, $result_type = MYSQLI_BOTH)
     {
         return mysqli_fetch_array($result, $result_type);
