@@ -4,7 +4,8 @@
     },
     "require": {
         "phpcompatibility/php-compatibility": "^9.3",
-        "friendsofphp/php-cs-fixer": "^3.22"
+        "friendsofphp/php-cs-fixer": "^3.22",
+        "ext-mysqli": "*"
     },
     "autoload": {
         "psr-4": {
