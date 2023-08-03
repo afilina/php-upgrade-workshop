@@ -4,7 +4,7 @@ $title = 'My Awesome Shop';
 include 'page_header.inc';
 
 // Queries
-$result = mysql_query('SELECT * FROM products');
+$result = Adapter53::mysql_query('SELECT * FROM products');
 
 // HTML
 ?>
@@ -15,7 +15,7 @@ $result = mysql_query('SELECT * FROM products');
         <td>Price</td>
     </tr>
 <?php
-while($row = mysql_fetch_array($result)) {
+while($row = Adapter53::mysql_fetch_array($result)) {
     ?>
     <tr>
         <td><a href="<?=$hostname?>/product.php?action=view&id=<?=$row['id']?>"><?=$row['name']?></a></td>

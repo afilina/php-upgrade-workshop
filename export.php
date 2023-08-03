@@ -3,8 +3,8 @@ include 'include/common.inc';
 
 switch ($_GET['action']) {
     case 'products_csv':
-        $result = mysql_query('SELECT * FROM products');
-        while($row = mysql_fetch_array($result)) {
+        $result = Adapter53::mysql_query('SELECT * FROM products');
+        while($row = Adapter53::mysql_fetch_array($result)) {
             $rows[] = $row;
         }
 
@@ -23,12 +23,12 @@ switch ($_GET['action']) {
         $html .= '<h1>Product List</h1>';
         $html .= '<table border="1" cellspacing="0" cellpadding="5">';
         $html .= '<tr><td>Name</td><td>Price</td></tr>';
-        $result = mysql_query('SELECT * FROM products');
-        while($row = mysql_fetch_array($result)) {
+        $result = Adapter53::mysql_query('SELECT * FROM products');
+        while($row = Adapter53::mysql_fetch_array($result)) {
             $html .= '<tr><td>'.$row['name'].'</td><td>'.format_price($row['price']).'</td></tr>';
         }
         $html .= '</table>';
-        $html .= '<p>Product count: '.mysql_numrows($result).'</p>';
+        $html .= '<p>Product count: ' . Adapter53::mysql_numrows($result).'</p>';
         export_pdf($html);
 }
 ?>

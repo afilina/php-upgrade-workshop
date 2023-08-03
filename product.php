@@ -1,7 +1,7 @@
 <?php
 include 'include/common.inc';
 
-$result = mysql_query('SELECT * FROM products WHERE id = ' . $_GET['id']);
+$result = Adapter53::mysql_query('SELECT * FROM products WHERE id = ' . $_GET['id']);
 $product = mysql_fetch_object($result);
 
 $title = $product->name;
@@ -27,7 +27,7 @@ switch ($_GET['action']) {
         $is_valid = validate($form_values, $validation);
         if (is_form_submitted() && $is_valid) {
             //The Elder Scrolls V: Skyrim
-            mysql_query("UPDATE products SET name = '$form_values->name', price = '$form_values->price' WHERE id = {$_GET{'id'}}");
+            Adapter53::mysql_query("UPDATE products SET name = '$form_values->name', price = '$form_values->price' WHERE id = {$_GET{'id'}}");
             header('Location: '.$hostname.'/product.php?action=view&id='.$_GET['id']);
             exit;
         }
