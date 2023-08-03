@@ -6,6 +6,11 @@
         "phpcompatibility/php-compatibility": "^9.3",
         "friendsofphp/php-cs-fixer": "^3.22"
     },
+    "autoload": {
+        "psr-4": {
+            "": "src/"
+        }
+    },
     "scripts": {
         "post-install-cmd": "\"vendor/bin/phpcs\" --config-set installed_paths vendor/phpcompatibility/php-compatibility",
         "post-update-cmd" : "\"vendor/bin/phpcs\" --config-set installed_paths vendor/phpcompatibility/php-compatibility"

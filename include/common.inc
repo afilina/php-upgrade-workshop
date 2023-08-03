@@ -1,4 +1,7 @@
 <?
+
+include 'vendor/autoload.php';
+
 error_reporting(E_ERROR);
 $root = realpath(__DIR__ . '/../');
 set_include_path(join(':', array(
@@ -13,7 +16,7 @@ $fh = fopen($config_file, 'r');
 $config = fread($fh, filesize($config_file));
 fclose($fh);
 
-$config = split("[\n]", $config);
+$config = Adapter53::split("[\n]", $config);
 while (list($k, $v) = each($config)) {
     $separator = strpos($v, '=');
     define(strtoupper(substr($v, 0, $separator)), substr($v, $separator + 1));
