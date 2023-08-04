@@ -9,7 +9,9 @@
         "beberlei/assert": "^3.3",
         "php-di/php-di": "^7.0",
         "symfony/routing": "^6.3",
-        "symfony/config": "^6.3"
+        "symfony/config": "^6.3",
+        "symfony/twig-bundle": "^6.3",
+        "twig/twig": "^3.7"
     },
     "autoload": {
         "psr-4": {
