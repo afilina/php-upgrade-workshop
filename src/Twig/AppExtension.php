@@ -2,6 +2,7 @@
 
 namespace Twig;
 
+use Products\Money;
 use Twig\Extension\AbstractExtension;
 
 class AppExtension extends AbstractExtension
@@ -13,8 +14,8 @@ class AppExtension extends AbstractExtension
         ];
     }
 
-    public function formatPrice($number)
+    public function formatPrice(Money $money): string
     {
-        return '$' . number_format($number, 2, '.', ',');
+        return '$' . number_format($money->amountInCents / 100, 2, '.', ',');
     }
 }
