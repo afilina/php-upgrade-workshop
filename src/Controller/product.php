@@ -7,6 +7,12 @@ class ProductController
         $product = $this->fetchProduct();
 
         $title = $product->name;
+
+        $this->viewView($title, $product);
+    }
+
+    private function viewView($title, $product)
+    {
         include 'page_header.inc';
 
         ?>
@@ -23,9 +29,8 @@ class ProductController
     public function editAction()
     {
         $product = $this->fetchProduct();
-
-        include 'page_header.inc';
         include 'functions_admin.inc';
+
         $form_values = get_form_values($product);
         $validation = array(
             'name' => array('notempty' => true, 'length' => array('max' => MAX_PRODUCT_NAME_LENGTH))
@@ -35,9 +40,17 @@ class ProductController
             //The Elder Scrolls V: Skyrim
             Adapter53::mysql_query("UPDATE products SET name = '$form_values->name', price = $form_values->price WHERE id = {$_GET['id']}");
             header('Location: ' . $hostname . '/product.php?action=view&id=' . $_GET['id']);
-            exit;
+            return;
         }
+
+        $this->editView($product, $form_values);
+    }
+
+    private function editView($product, $form_values)
+    {
+        include 'page_header.inc';
         ?>
+
         <h1>Edit Product <?= $product->id ?></h1>
         <?php
         if (is_form_submitted() && count($errors) > 0) {

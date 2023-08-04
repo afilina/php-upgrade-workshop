@@ -5,12 +5,15 @@ class IndexController
     public function defaultAction()
     {
         $title = 'My Awesome Shop';
-        include 'page_header.inc';
-
-// Queries
         $result = Adapter53::mysql_query('SELECT * FROM products');
 
-// HTML
+        $this->defaultView($title, $result);
+    }
+
+    private function defaultView($title, $result)
+    {
+        include 'page_header.inc';
+        include 'page_footer.inc';
         ?>
         <a href="<?=$hostname?>/export.php?action=products_csv">Export CSV</a> | <a href="<?=$hostname?>/export.php?action=products_pdf">Export PDF</a>
         <table border="1">
@@ -30,6 +33,5 @@ class IndexController
             ?>
         </table>
         <?php
-        include 'page_footer.inc';
     }
 }
