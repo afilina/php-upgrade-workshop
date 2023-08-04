@@ -1,7 +1,15 @@
 <?php
 
+use Config\ViewGlobals;
+
 class ProductController
 {
+    public function __construct(
+        private readonly ViewGlobals $viewGlobals
+    )
+    {
+    }
+
     public function viewAction()
     {
         $product = $this->fetchProduct();
@@ -18,7 +26,7 @@ class ProductController
         ?>
         <h1><?=$product->name?></h1>
         <?php if (is_admin()): ?>
-        <a href="<?=$hostname?>/product.php?action=edit&id=<?=$_GET['id']?>">Admin Edit</a>
+        <a href="<?=$this->viewGlobals->hostname?>/product.php?action=edit&id=<?=$_GET['id']?>">Admin Edit</a>
     <?php endif ?>
         <p>Price: <?=format_price($product->price)?></p>
         <?php
@@ -39,7 +47,7 @@ class ProductController
         if (is_form_submitted() && $is_valid) {
             //The Elder Scrolls V: Skyrim
             Adapter53::mysql_query("UPDATE products SET name = '$form_values->name', price = $form_values->price WHERE id = {$_GET['id']}");
-            header('Location: ' . $hostname . '/product.php?action=view&id=' . $_GET['id']);
+            header('Location: ' . $this->viewGlobals->hostname . '/product.php?action=view&id=' . $_GET['id']);
             return;
         }
 
@@ -48,6 +56,7 @@ class ProductController
 
     private function editView($product, $form_values)
     {
+        global $errors;
         include 'page_header.inc';
         ?>
 
@@ -57,7 +66,7 @@ class ProductController
             show_form_errors();
         }
         ?>
-        <form action="<?= $hostname ?>/product.php?action=edit&id=<?= $_GET['id'] ?>" method="POST">
+        <form action="<?= $this->viewGlobals->hostname ?>/product.php?action=edit&id=<?= $_GET['id'] ?>" method="POST">
             <table>
                 <tr>
                     <td>Name:</td>

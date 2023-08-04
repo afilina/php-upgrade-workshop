@@ -21,4 +21,5 @@ $action = $_GET['action'] ?? 'default';
 require sprintf('src/Controller/%s.php', $controller); // src/Controller/index.php
 $class = sprintf('%sController', ucfirst($controller)); // IndexController
 $method = sprintf('%sAction', $action);
-(new $class())->{$method}(); // (new IndexController)->defaultAction()
+
+$container->get($class)->{$method}(); // IndexController::defaultAction
