@@ -3,7 +3,7 @@
 {% block title %}My Awesome Shop{% endblock %}
 
 {% block content %}
-    <a href="{{ hostname }}/export.php?action=products_csv">Export CSV</a> | <a href="{{ hostname }}/export.php?action=products_pdf">Export PDF</a>
+    <a href="{{ global.hostname }}/export.php?action=products_csv">Export CSV</a> | <a href="{{ global.hostname }}/export.php?action=products_pdf">Export PDF</a>
     <table border="1">
         <tr>
             <td>Product</td>
@@ -11,7 +11,7 @@
         </tr>
         {% for row in results %}
             <tr>
-                <td><a href="{{ hostname }}/product.php?action=view&id={{ row.id }}">{{ row.name }}</a></td>
+                <td><a href="{{ global.hostname }}/product.php?action=view&id={{ row.id }}">{{ row.name }}</a></td>
                 <td>{{ row.price|format_price }}</td>
             </tr>
         {% endfor %}
