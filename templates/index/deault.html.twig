@@ -10,7 +10,7 @@
         {% for row in results %}
             <tr>
                 <td><a href="{{ hostname }}/product.php?action=view&id={{ row.id }}">{{ row.name }}</a></td>
-                <td><?=format_price({{ row.price }})?></td>
+                <td>{{ row.price|format_price }}</td>
             </tr>
         {% endfor %}
     </table>

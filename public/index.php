@@ -19,7 +19,9 @@ $services = [];
 $builder = new DI\ContainerBuilder();
 $twig = new Environment($loader, [
     'cache' => __DIR__ . '/../var/cache/templates',
+    'debug' => true,
 ]);
+$twig->addExtension(new AppExtension());
 
 $builder->addDefinitions([
     ViewGlobals::class => new ViewGlobals('http://localhost:8081'),
@@ -34,7 +36,7 @@ $router = new Router(
 );
 preg_match('/^\/([\w-]+)\.php/', $_SERVER['REQUEST_URI'], $matches);
 $pathParts = [
-    $matches[1],
+    $matches[1] ?? '',
     $_GET['action'] ?? null,
     $_GET['id'] ?? null,
 ];
