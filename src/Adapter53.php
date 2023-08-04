@@ -16,13 +16,12 @@ final class Adapter53
             return null;
         }
 
-        $current = current($array);
-        if ($current === false || $current === null) {
+        $key = key($array);
+        if ($key === false || $key === null) {
             return false;
         }
 
-        $key = key($array);
-        $value = $current;
+        $value = current($array);
         next($array);
 
         return [
