@@ -14,14 +14,8 @@ class IndexController
     {
         $result = Adapter53::mysql_query('SELECT * FROM products');
 
-        echo $this->templating->render('index/deault.html.twig', [
+        echo $this->templating->render('index/default.html.twig', [
             'results' => mysqli_fetch_all($result, MYSQLI_ASSOC)
         ]);
-    }
-
-    private function defaultView($title, $result)
-    {
-        include 'page_header.inc';
-        include 'page_footer.inc';
     }
 }
