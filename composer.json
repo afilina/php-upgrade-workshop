@@ -7,7 +7,9 @@
         "friendsofphp/php-cs-fixer": "^3.22",
         "ext-mysqli": "*",
         "beberlei/assert": "^3.3",
-        "php-di/php-di": "^7.0"
+        "php-di/php-di": "^7.0",
+        "symfony/routing": "^6.3",
+        "symfony/config": "^6.3"
     },
     "autoload": {
         "psr-4": {
