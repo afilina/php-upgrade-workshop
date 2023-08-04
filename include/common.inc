@@ -10,8 +10,6 @@ set_include_path(join(':', array(
 
 include 'vendor/autoload.php';
 
-$hostname = 'http://localhost:8081';
-
 $config_file = $root . '/include/config.inc';
 $fh = fopen($config_file, 'r');
 $config = fread($fh, filesize($config_file));
