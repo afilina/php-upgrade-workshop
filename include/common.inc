@@ -1,13 +1,14 @@
 <?php
 
-include 'vendor/autoload.php';
-
 error_reporting(E_ERROR);
 $root = realpath(__DIR__ . '/../');
 set_include_path(join(':', array(
     $root . '/include',
-    $root . '/plugins'
+    $root . '/plugins',
+    $root,
 )));
+
+include 'vendor/autoload.php';
 
 $hostname = 'http://localhost:8081';
 

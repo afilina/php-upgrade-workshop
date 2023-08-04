@@ -1,5 +1,4 @@
 <?php
-include 'include/common.inc';
 
 switch ($_GET['action']) {
     case 'products_csv':

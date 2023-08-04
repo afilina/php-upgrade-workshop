@@ -1,5 +1,4 @@
 <?php
-include 'include/common.inc';
 
 $result = Adapter53::mysql_query('SELECT * FROM products WHERE id = ' . $_GET['id']);
 $product = Adapter53::mysql_fetch_object($result);
