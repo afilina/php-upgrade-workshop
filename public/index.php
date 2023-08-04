@@ -5,14 +5,26 @@ use Config\ViewGlobals;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\Routing\Loader\PhpFileLoader;
 use Symfony\Component\Routing\Router;
+use Twig\AppExtension;
+use Twig\Environment;
+use Twig\Loader\FilesystemLoader;
 
 require '../include/common.inc';
+
+// Twig
+$loader = new FilesystemLoader(__DIR__ . '/../templates');
 
 // Transitional DI
 $services = [];
 $builder = new DI\ContainerBuilder();
+$twig = new Environment($loader, [
+    'cache' => __DIR__ . '/../var/cache/templates',
+]);
+$twig->addExtension(new AppExtension());
+
 $builder->addDefinitions([
     ViewGlobals::class => new ViewGlobals('http://localhost:8081'),
+    Environment::class => $twig
 ]);
 $container = $builder->build();
 
