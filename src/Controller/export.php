@@ -1,7 +1,9 @@
 <?php
 
-switch ($_GET['action']) {
-    case 'products_csv':
+class ExportController
+{
+    public function products_csvAction()
+    {
         $result = Adapter53::mysql_query('SELECT * FROM products');
         while($row = Adapter53::mysql_fetch_array($result)) {
             $rows[] = $row;
@@ -18,7 +20,10 @@ switch ($_GET['action']) {
             echo implode(',', array('name'=>$v['name'], 'price'=>$v['price'])) . "\n";
         }
         exit;
-    case 'products_pdf':
+    }
+
+    public function products_pdfAction()
+    {
         $html .= '<h1>Product List</h1>';
         $html .= '<table border="1" cellspacing="0" cellpadding="5">';
         $html .= '<tr><td>Name</td><td>Price</td></tr>';
@@ -29,5 +34,5 @@ switch ($_GET['action']) {
         $html .= '</table>';
         $html .= '<p>Product count: ' . Adapter53::mysql_numrows($result).'</p>';
         export_pdf($html);
+    }
 }
-?>
