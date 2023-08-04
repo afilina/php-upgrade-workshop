@@ -8,7 +8,7 @@ set_include_path(join(':', array(
     $root,
 )));
 
-include 'vendor/autoload.php';
+require __DIR__ . '/../vendor/autoload.php';
 
 $config_file = $root . '/include/config.inc';
 $fh = fopen($config_file, 'r');
