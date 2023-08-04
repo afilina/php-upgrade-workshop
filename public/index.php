@@ -20,7 +20,6 @@ $builder = new DI\ContainerBuilder();
 $twig = new Environment($loader, [
     'cache' => __DIR__ . '/../var/cache/templates',
 ]);
-$twig->addExtension(new AppExtension());
 
 $builder->addDefinitions([
     ViewGlobals::class => new ViewGlobals('http://localhost:8081'),
