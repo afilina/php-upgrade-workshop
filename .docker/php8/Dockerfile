@@ -8,4 +8,7 @@ ADD .docker/php8/xdebug.ini /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
 RUN docker-php-ext-install mysqli &&  \
     docker-php-ext-enable mysqli
 
+ADD .docker/php8/vhost.conf /etc/apache2/sites-enabled/000-default.conf
+
+RUN a2enmod rewrite
 RUN service apache2 start
