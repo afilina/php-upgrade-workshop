@@ -20,7 +20,17 @@ class DoctrineProductRepository implements ProductRepository
         return array_map(fn(array $row) => new Product(
             $row['id'],
             $row['name'],
-            new Money((int)($row['price'] * 100)),
+            Money::fromString($row['price']),
         ), $rows);
+    }
+
+    public function update(Product $product): void
+    {
+        $this->connection->update('products', [
+            'name' => $product->name,
+            'price' => $product->price->string,
+        ], [
+            'id' => $product->id,
+        ]);
     }
 }

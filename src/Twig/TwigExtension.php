@@ -5,7 +5,7 @@ namespace Twig;
 use Products\Money;
 use Twig\Extension\AbstractExtension;
 
-class AppExtension extends AbstractExtension
+class TwigExtension extends AbstractExtension
 {
     public function getFilters()
     {
@@ -16,6 +16,6 @@ class AppExtension extends AbstractExtension
 
     public function formatPrice(Money $money): string
     {
-        return '$' . number_format($money->amountInCents / 100, 2, '.', ',');
+        return '$' . number_format($money->string, 2, '.', ',');
     }
 }

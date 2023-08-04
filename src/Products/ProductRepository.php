@@ -9,4 +9,6 @@ interface ProductRepository
      * @return Product[]
      */
     public function fetchAll(): array;
+
+    public function update(Product $product): void;
 }

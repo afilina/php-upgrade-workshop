@@ -1,11 +1,15 @@
 <?php
 
 use Config\ViewGlobals;
+use Products\Money;
+use Products\Product;
+use Products\ProductRepository;
 
 class ProductController
 {
     public function __construct(
-        private readonly ViewGlobals $viewGlobals
+        private readonly ViewGlobals $viewGlobals,
+        private readonly ProductRepository $productRepository,
     )
     {
     }
@@ -46,7 +50,7 @@ class ProductController
         $is_valid = validate($form_values, $validation);
         if (is_form_submitted() && $is_valid) {
             //The Elder Scrolls V: Skyrim
-            Adapter53::mysql_query("UPDATE products SET name = '$form_values->name', price = $form_values->price WHERE id = {$_GET['id']}");
+            $this->productRepository->update(new Product($_GET['id'], $form_values->name, Money::fromString($form_values->price)));
             header('Location: ' . $this->viewGlobals->hostname . '/product.php?action=view&id=' . $_GET['id']);
             return;
         }

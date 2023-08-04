@@ -7,7 +7,7 @@ use Doctrine\DBAL\DriverManager;
 use Doctrine\DBAL\Tools\DsnParser;
 use Products\DoctrineProductRepository;
 use Products\ProductRepository;
-use Twig\AppExtension;
+use Twig\TwigExtension;
 use Twig\Environment;
 use Twig\Loader\FilesystemLoader;
 
@@ -19,7 +19,7 @@ $twig = new Environment($loader, [
     'debug' => true,
     'strict_variables' => true,
 ]);
-$twig->addExtension(new AppExtension());
+$twig->addExtension(new TwigExtension());
 $twig->addGlobal('global', $viewGlobals);
 
 $dsnParser = new DsnParser();
